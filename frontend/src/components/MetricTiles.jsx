@@ -18,9 +18,9 @@ const MetricTiles = ({ dateRange }) => {
     try {
       setLoading(true);
       setError('');
-      const response = await axios.get(getApiUrl('/api/analytics/summary', {
+      const response = await axios.get('https://brand-analytics-dashboard-kuj1.onrender.com/api/analytics/summary', {
         params: dateRange
-      }));
+      });
       setMetrics(response.data);
     } catch (error) {
       console.error('Error fetching metrics:', error);

@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.get(getApiUrl('/api/auth/me'));
+        const response = await axios.get('https://brand-analytics-dashboard-kuj1.onrender.com/api/auth/me');
         setUser(response.data.user);
       }
     } catch (error) {
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setError('');
-      const response = await axios.post(getApiUrl('/api/auth/login', { email, password }));
+      const response = await axios.post('https://brand-analytics-dashboard-kuj1.onrender.com/api/auth/login', { email, password });
       const { token, user } = response.data;
 
       localStorage.setItem('token', token);

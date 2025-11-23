@@ -17,9 +17,9 @@ const DataTable = ({ dateRange }) => {
     try {
       setLoading(true);
       setError('');
-      const response = await axios.get(getApiUrl('/api/analytics/shoe-totals', {
+      const response = await axios.get('https://brand-analytics-dashboard-kuj1.onrender.com/api/analytics/shoe-totals', {
         params: dateRange
-      }));
+      });
       setData(response.data);
     } catch (error) {
       console.error('Error fetching table data:', error);

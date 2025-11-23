@@ -55,7 +55,7 @@ const LineChart = ({ dateRange }) => {
 
   const fetchShoes = async () => {
     try {
-      const response = await axios.get(getApiUrl("/api/shoes"));
+      const response = await axios.get("https://brand-analytics-dashboard-kuj1.onrender.com/api/shoes");
       setShoes(response.data);
       if (response.data.length > 0) {
         setSelectedShoe(response.data[0]._id);
@@ -70,14 +70,14 @@ const LineChart = ({ dateRange }) => {
     try {
       setLoading(true);
       setError("");
-      const response = await axios.get(getApiUrl("/api/analytics/shoe-metrics", {
+      const response = await axios.get("https://brand-analytics-dashboard-kuj1.onrender.com/api/analytics/shoe-metrics", {
         params: {
           shoeId: selectedShoe,
           startDate: dateRange.startDate,
           endDate: dateRange.endDate,
           metrics: selectedMetrics,
         },
-      }));
+      });
 
       const responseData = response.data;
 
