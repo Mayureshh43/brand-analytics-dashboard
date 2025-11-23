@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getApiUrl } from '../config/api';
 
 const DataTable = ({ dateRange }) => {
   const [data, setData] = useState({ shoeTotals: [], grandTotals: null });
@@ -16,9 +17,9 @@ const DataTable = ({ dateRange }) => {
     try {
       setLoading(true);
       setError('');
-      const response = await axios.get('/api/analytics/shoe-totals', {
+      const response = await axios.get(getApiUrl('/api/analytics/shoe-totals', {
         params: dateRange
-      });
+      }));
       setData(response.data);
     } catch (error) {
       console.error('Error fetching table data:', error);

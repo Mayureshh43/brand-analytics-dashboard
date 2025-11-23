@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
+import { getApiUrl } from '../config/api';
 
 ChartJS.register(
   CategoryScale,
@@ -54,7 +55,7 @@ const LineChart = ({ dateRange }) => {
 
   const fetchShoes = async () => {
     try {
-      const response = await axios.get("/api/shoes");
+      const response = await axios.get(getApiUrl("/api/shoes"));
       setShoes(response.data);
       if (response.data.length > 0) {
         setSelectedShoe(response.data[0]._id);
@@ -69,14 +70,14 @@ const LineChart = ({ dateRange }) => {
     try {
       setLoading(true);
       setError("");
-      const response = await axios.get("/api/analytics/shoe-metrics", {
+      const response = await axios.get(getApiUrl("/api/analytics/shoe-metrics", {
         params: {
           shoeId: selectedShoe,
           startDate: dateRange.startDate,
           endDate: dateRange.endDate,
           metrics: selectedMetrics,
         },
-      });
+      }));
 
       const responseData = response.data;
 

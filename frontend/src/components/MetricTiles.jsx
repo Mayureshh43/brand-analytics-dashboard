@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getApiUrl } from '../config/api';
 import SkeletonLoader from './SkeletonLoader';
 
 const MetricTiles = ({ dateRange }) => {
@@ -17,9 +18,9 @@ const MetricTiles = ({ dateRange }) => {
     try {
       setLoading(true);
       setError('');
-      const response = await axios.get('/api/analytics/summary', {
+      const response = await axios.get(getApiUrl('/api/analytics/summary', {
         params: dateRange
-      });
+      }));
       setMetrics(response.data);
     } catch (error) {
       console.error('Error fetching metrics:', error);
