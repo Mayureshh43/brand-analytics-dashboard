@@ -26,13 +26,13 @@ app.use(sanitizeInput);
 // CORS configuration
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? [
-            "https://brand-analytics-dashboard-one.vercel.app",
-            "https://brand-analytics-dashboard-mayuresh-dalvis-projects.vercel.app",
-          ]
-        : ["http://localhost:3000"],
+    origin:true,
+      // process.env.NODE_ENV === "production"
+      //   ? [
+      //       "https://brand-analytics-dashboard-one.vercel.app",
+      //       "https://brand-analytics-dashboard-mayuresh-dalvis-projects.vercel.app",
+      //     ]
+      //   : ["http://localhost:3000"],
     credentials: true,
   })
 );
